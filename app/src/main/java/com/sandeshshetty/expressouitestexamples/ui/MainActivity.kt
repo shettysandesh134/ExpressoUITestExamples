@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init(){
+        // post recyclerview
         if(supportFragmentManager.fragments.size == 0){
             val movieId = 1
             val bundle = Bundle()
