@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "805296938433",
+    "firebase_url": "https://ui-expresso-testing-68ee4.firebaseio.com",
+    "project_id": "ui-expresso-testing-68ee4",
+    "storage_bucket": "ui-expresso-testing-68ee4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805296938433:android:9e7917a442838c0e3b6340",
+        "android_client_info": {
+          "package_name": "com.sandeshshetty.expressouitestexamples"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805296938433-fbiu2rmf9qq2s0fip482qoub6dv8crh1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz3W6kbEamJi-zCMLUAlwiL8VNmlQsTSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805296938433-fbiu2rmf9qq2s0fip482qoub6dv8crh1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
