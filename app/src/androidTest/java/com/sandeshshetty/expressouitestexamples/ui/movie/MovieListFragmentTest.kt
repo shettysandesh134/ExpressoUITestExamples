@@ -15,6 +15,7 @@ import com.sandeshshetty.expressouitestexamples.ui.MainActivity
 import com.sandeshshetty.expressouitestexamples.ui.movie.DirectorsFragment.Companion.stringBuilderForDirectors
 import com.sandeshshetty.expressouitestexamples.ui.movie.MoviesListAdapter.*
 import com.sandeshshetty.expressouitestexamples.ui.movie.StarActorsFragment.Companion.stringBuilderForStarActors
+import com.sandeshshetty.expressouitestexamples.ui.util.EspressoIdlingResourceRule
 import com.sandeshshetty.expressouitestexamples.util.EspressoIdlingResource
 import kotlinx.android.synthetic.main.fragment_movie_list.*
 import org.junit.*
@@ -32,15 +33,18 @@ class MovieListFragmentTest {
     val LIST_ITEM_IN_TEST = 4
     val MOVIE_IN_TEST = FakeMovieData.movies[LIST_ITEM_IN_TEST]
 
-    @Before
-    fun registerIdlingResource() {
-        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
-    }
+    @get:Rule
+    val idlingResourceRule = EspressoIdlingResourceRule()
 
-    @After
-    fun unregisterIdlingResource() {
-        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
-    }
+//    @Before
+//    fun registerIdlingResource() {
+//        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+//    }
+//
+//    @After
+//    fun unregisterIdlingResource() {
+//        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
+//    }
 
     /**
      * Recyclerview comes into view
