@@ -2,6 +2,7 @@ package com.sandeshshetty.expressouitestexamples.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.bumptech.glide.request.RequestOptions
 import com.sandeshshetty.expressouitestexamples.R
 import com.sandeshshetty.expressouitestexamples.data.source.MoviesDataSource
@@ -11,8 +12,9 @@ import com.sandeshshetty.expressouitestexamples.data.source.MoviesRemoteDataSour
 import com.sandeshshetty.expressouitestexamples.factory.MovieFragmentFactory
 import com.sandeshshetty.expressouitestexamples.ui.movie.MovieDetailFragment
 import com.sandeshshetty.expressouitestexamples.ui.movie.MovieListFragment
+import kotlinx.android.synthetic.main.activity_main2.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), UICommunicationListener {
 
     // dependencies (typically would be injected with dagger)
     lateinit var requestOptions: RequestOptions
@@ -57,6 +59,13 @@ class MainActivity : AppCompatActivity() {
 
         // Data Source
         moviesDataSource = MoviesRemoteDataSource()
+    }
+
+    override fun loading(isLoading: Boolean) {
+        if (isLoading)
+            progress_bar.visibility = View.VISIBLE
+        else
+            progress_bar.visibility = View.INVISIBLE
     }
 
 }

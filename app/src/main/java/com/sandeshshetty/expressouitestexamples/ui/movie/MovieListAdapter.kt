@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sandeshshetty.expressouitestexamples.R
 import com.sandeshshetty.expressouitestexamples.data.Movie
+import com.sandeshshetty.expressouitestexamples.util.EspressoIdlingResource
 import kotlinx.android.synthetic.main.layout_movie_list_item.view.*
 
 class MoviesListAdapter(private val interaction: Interaction? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    //
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Movie>() {
 
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
@@ -53,7 +55,12 @@ class MoviesListAdapter(private val interaction: Interaction? = null) :
     }
 
     fun submitList(list: List<Movie>) {
-        differ.submitList(list)
+
+        EspressoIdlingResource.increment()
+        val dataCommitCallBack = Runnable { // this callback is called when submitList is done what it is doing
+            EspressoIdlingResource.decrement()
+        }
+        differ.submitList(list, dataCommitCallBack)
     }
 
     class MovieViewHolder

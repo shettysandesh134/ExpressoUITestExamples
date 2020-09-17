@@ -2,6 +2,7 @@ package com.sandeshshetty.expressouitestexamples.ui.movie
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
@@ -14,12 +15,14 @@ import com.sandeshshetty.expressouitestexamples.ui.MainActivity
 import com.sandeshshetty.expressouitestexamples.ui.movie.DirectorsFragment.Companion.stringBuilderForDirectors
 import com.sandeshshetty.expressouitestexamples.ui.movie.MoviesListAdapter.*
 import com.sandeshshetty.expressouitestexamples.ui.movie.StarActorsFragment.Companion.stringBuilderForStarActors
+import com.sandeshshetty.expressouitestexamples.util.EspressoIdlingResource
 import kotlinx.android.synthetic.main.fragment_movie_list.*
+import org.junit.*
 import org.junit.Assert.*
-import org.junit.Rule
-import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.runners.MethodSorters
 
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4ClassRunner::class)
 class MovieListFragmentTest {
 
@@ -28,6 +31,16 @@ class MovieListFragmentTest {
 
     val LIST_ITEM_IN_TEST = 4
     val MOVIE_IN_TEST = FakeMovieData.movies[LIST_ITEM_IN_TEST]
+
+    @Before
+    fun registerIdlingResource() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+    }
+
+    @After
+    fun unregisterIdlingResource() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
+    }
 
     /**
      * Recyclerview comes into view
